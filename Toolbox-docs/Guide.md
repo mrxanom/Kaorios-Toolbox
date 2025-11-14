@@ -4,7 +4,7 @@
 
 - **Download** `App & Xml`, and `classes.dex` from: **[releases](https://github.com/Wuang26/Kaorios-Toolbox/releases)**
 - **Add app directory:**
-  - Copy the **KaoriosToolbox** folder to: `/system/priv-app/`
+  - Copy the **KaoriosToolbox** folder to: `/system_ext/priv-app/` or `/product/priv-app/`
 - **Copy files:**
   - Copy `privapp_whitelist_com.kousei.kaorios.xml` → `/system/etc/permissions/`
 - **Permissions:**
