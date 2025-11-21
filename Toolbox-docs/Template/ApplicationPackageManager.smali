@@ -56,6 +56,7 @@
     return v1
 
     :cond_1e
+    # kousei added
     invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
 
     move-result-object v0
@@ -391,6 +392,7 @@
     return v3
 
     :cond_14e
+    # end add
     sget-object v1, Landroid/app/ApplicationPackageManager;->mHasSystemFeatureCache:Landroid/app/PropertyInvalidatedCache;
 
     new-instance v2, Landroid/app/ApplicationPackageManager$HasSystemFeatureQuery;
