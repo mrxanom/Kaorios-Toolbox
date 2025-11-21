@@ -68,7 +68,7 @@ hasSystemFeature(Ljava/lang/String;I)Z
 ```
 Landroid/app/ApplicationPackageManager;->mHasSystemFeatureCache:Landroid/app/PropertyInvalidatedCache;
 ```
-> add this code below the just found:
+> add this code above the just found:
 ```
     invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
 
