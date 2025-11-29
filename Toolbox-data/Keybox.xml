@@ -1,5 +1,6 @@
-<?xml version="1.0"?>
-<AndroidAttestation><NumberOfKeyboxes>1</NumberOfKeyboxes>
+<?xml version="1.0" encoding="UTF-8"?>
+<AndroidAttestation>
+<NumberOfKeyboxes>1</NumberOfKeyboxes>
 <Keybox DeviceID="KaoriosToolbox">
 <Key algorithm="ecdsa">
 <PrivateKey format="pem">
@@ -28,9 +29,9 @@ MIIFHDCCAwSgAwIBAgIJANUP8luj8tazMA0GCSqGSIb3DQEBCwUAMBsxGTAXBgNVBAUTEGY5MjAwOWU4
 </Key>
 <Key algorithm="rsa">
 <PrivateKey format="pem">
------BEGIN RSA PRIVATE KEY-----
+-----BEGIN EC PRIVATE KEY-----
 MHcCAQEEIPKB/t3P4Rfr2fcyUcl+yW4LOzPFJzh4+KW80hLeHkxkoAoGCCqGSM49AwEHoUQDQgAEvoT5tY8HFsl1LwypDwA+LD/UffsAzO84PtnLpFzLftFmMs3BJQ8TVWV7k7jsN7F6LSrw/MPPZj9S+D3bGnMsdQ==
------END RSA PRIVATE KEY-----
+-----END EC PRIVATE KEY-----
 </PrivateKey>
 <CertificateChain>
 <NumberOfCertificates>3</NumberOfCertificates>
