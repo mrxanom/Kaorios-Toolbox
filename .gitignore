@@ -7,3 +7,8 @@ node_modules/
 Toolbox-patcher/framework_patched.jar
 # Toolbox-patcher/framework_decompile/
 Toolbox-patcher/backup/
+
+# Module creation build artifacts
+Toolbox-patcher/build_kaorios_module/
+Toolbox-patcher/kaoriosFramework.zip
+Toolbox-patcher/temp_apk_extract/

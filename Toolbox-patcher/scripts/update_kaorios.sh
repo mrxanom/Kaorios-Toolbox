@@ -58,22 +58,26 @@ get_latest_release_info() {
     fi
     
     # Extract download URLs for individual assets
-    APK_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*KaoriosToolbox\.apk"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
+    APK_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*KaoriosToolbox.*\.apk"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
     XML_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*privapp_whitelist[^"]*\.xml"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
-    DEX_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*classes\.dex"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
+    DEX_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*classes.*\.dex"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
     
-    if [ -z "$APK_URL" ] || [ -z "$XML_URL" ] || [ -z "$DEX_URL" ]; then
+    if [ -z "$APK_URL" ] || [ -z "$XML_URL" ]; then
         err "Could not find required assets in release"
         echo "APK URL: $APK_URL"
         echo "XML URL: $XML_URL"
-        echo "DEX URL: $DEX_URL"
         return 1
+    fi
+
+    if [ -z "$DEX_URL" ]; then
+        warn "classes.dex not found in release assets, will attempt to extract from APK"
+    else
+        info "DEX: $(basename $DEX_URL)"
     fi
     
     info "Latest version: $LATEST_VERSION"
     info "APK: $(basename $APK_URL)"
     info "XML: $(basename $XML_URL)"
-    info "DEX: $(basename $DEX_URL)"
     
     return 0
 }
@@ -110,11 +114,13 @@ download_kaorios_release() {
         return 1
     fi
     
-    # Download classes.dex
-    if ! curl -L -o "$temp_dir/classes.dex" "$DEX_URL"; then
-        err "Failed to download classes.dex"
-        rm -rf "$temp_dir"
-        return 1
+    # Download classes.dex if available, otherwise extract from APK
+    if [ -n "$DEX_URL" ]; then
+        if ! curl -L -o "$temp_dir/classes.dex" "$DEX_URL"; then
+            err "Failed to download classes.dex"
+            rm -rf "$temp_dir"
+            return 1
+        fi
     fi
     
     # Verify files exist and have reasonable sizes
@@ -339,13 +345,13 @@ main() {
     
     echo ""
     echo "╔════════════════════════════════════════════════╗"
-    echo "║   ✅ Update Complete!                          ║"
-    echo "║   Version: $LATEST_VERSION"
+    echo "║   ✅ Update Complete!                           ║"
+    echo "║   Version: $LATEST_VERSION                              ║"
     echo "║                                                ║"
     echo "║   Updated components:                          ║"
     echo "║   • KaoriosToolbox.apk                         ║"
     echo "║   • privapp_whitelist XML                      ║"
-    echo "║   • $(find "$KAORIOS_DIR/utils/kaorios" -name "*.smali" | wc -l) utility classes                          ║"
+    echo "║   • $(find "$KAORIOS_DIR/utils/kaorios" -name "*.smali" | wc -l) utility classes                        ║"
     echo "╚════════════════════════════════════════════════╝"
     echo ""
     
