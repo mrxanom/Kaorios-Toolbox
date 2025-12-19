@@ -34,6 +34,12 @@ create_kaorios_module() {
         warn "module.prop not found in template"
     fi
 
+    # Ensure service.sh is executable
+    if [ -f "$build_dir/service.sh" ]; then
+        chmod +x "$build_dir/service.sh"
+        log "✓ Made service.sh executable"
+    fi
+
     # Add framework_patched.jar to system/framework/framework.jar
     if [ -f "framework_patched.jar" ]; then
         mkdir -p "$build_dir/system/framework"

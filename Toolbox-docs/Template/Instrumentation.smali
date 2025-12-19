@@ -32,14 +32,11 @@
 
     invoke-virtual {v0, p1}, Landroid/app/Application;->attach(Landroid/content/Context;)V
 
-    ###Kousei added
-    invoke-static {p1}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosProps(Landroid/content/Context;)V
+    invoke-static {p1}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriProps(Landroid/content/Context;)V
 
     return-object v0
 .end method
 
-
-# virtual methods
 .method public newApplication(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application;
     .registers 5
     .annotation system Ldalvik/annotation/Throws;
@@ -64,8 +61,7 @@
 
     invoke-virtual {v0, p3}, Landroid/app/Application;->attach(Landroid/content/Context;)V
 
-    ###Kousei added
-    invoke-static {p3}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosProps(Landroid/content/Context;)V
+    invoke-static {p3}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriProps(Landroid/content/Context;)V
 
     return-object v0
 .end method

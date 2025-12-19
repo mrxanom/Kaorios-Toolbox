@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- #Tiếng Việt - by: Kousei -->
+
     <!-- Common -->
     <string name="common_reset_to_default">Đặt lại về mặc định</string>
     <string name="common_snackbar_permission_needed">Vui lòng cấp quyền trước khi đặt lại.</string>
@@ -51,6 +53,7 @@
     <string name="device_info_fingerprint">Fingerprint</string>
     <string name="home_serial_hidden_label">Hiển thị</string>
     <string name="home_toast_copied">Đã sao chép: %1$s</string>
+    <string name="home_user_avatar_content_description">Ảnh đại diện người dùng</string>
 
     <!-- Features Tools -->
     <string name="features_group_features">Tính năng</string>
@@ -74,11 +77,17 @@
     <string name="features_toggle_spoof_vending_summary">Áp dụng cấu hình của GMS cho cả Google Play để vượt qua SafetyNet/Play Integrity.</string>
     <string name="features_toggle_fps_patch_title">Mở khóa tính năng sửa file nâng cao</string>
     <string name="features_toggle_fps_patch_summary">Cho phép mở khóa cấu hình game bằng file. vd: Teamfight Tactics,…</string>
+    <string name="features_toggle_spoof_netflix_title">Giả mạo Netflix</string>
+    <string name="features_toggle_spoof_netflix_summary">Giả mạo thiết bị Pixel để mở một số tính năng của ứng dụng Netflix.</string>
     <string name="features_group_play_integrity">Google Play Integrity</string>
     <string name="features_toggle_spoof_gms_title">Giả mạo Google Play Services</string>
     <string name="features_toggle_spoof_gms_summary">Áp dụng props Pixel cho Google Play Services khi cần đạt chứng nhận.</string>
+    <string name="features_toggle_spoof_provider_title">Giả mạo nhà cung cấp Keystore</string>
+    <string name="features_toggle_spoof_provider_summary">Thay thế nhà cung cấp Android Keystore cho Google Play Services và CH Play để giả mạo xác thực khóa.</string>
     <string name="features_toggle_spoof_attestation_title">Chặn xác minh phần cứng</string>
     <string name="features_toggle_spoof_attestation_summary">Loại bỏ các feature key attestation khỏi các ứng dụng.</string>
+    <string name="features_toggle_spoof_keybox_title">Giả mạo Keybox</string>
+    <string name="features_toggle_spoof_keybox_summary">Trả dữ liệu Keybox giả lập để vượt qua Play Integrity.</string>
     <string name="features_group_system_adjustments">Điều chỉnh hệ thống</string>
     <string name="features_toggle_force_boot_hash_title">Buộc ghi đè boothash</string>
     <string name="features_toggle_force_boot_hash_summary">Ghi đè bootloader hash để khớp với dữ liệu Keybox áp dụng.</string>
@@ -155,7 +164,7 @@
     <string name="hidden_field_desc_optional">Mô tả (không bắt buộc)</string>
     <string name="hidden_action_remove_sub_rule">Xoá rule</string>
     <string name="hidden_section_hex_rules">Rule thay thế hex</string>
-    <string name="hidden_field_find_hex">Hex cần tìm</string>
+    <string name="hidden_field_find_hex">Hex c��n tìm</string>
     <string name="hidden_field_replace_hex">Hex thay thế</string>
     <string name="hidden_section_extra_flags">Cờ bổ sung</string>
     <string name="hidden_section_extra_numbers">Giá trị số</string>
@@ -174,6 +183,26 @@
     <string name="hidden_action_duplicate_rule">Nhân bản</string>
     <string name="hidden_action_delete_rule">Xoá</string>
     <string name="hidden_message_missing_packages">%1$d cấu hình đang nhắm tới ứng dụng chưa được cài trên máy.</string>
+
+    <!-- FPS Overlay -->
+    <string name="tool_page_fps_title">FPS</string>
+    <string name="tool_page_fps_summary">Hiển thị lớp phủ FPS và tùy chỉnh giao diện.</string>
+    <string name="fps_title">FPS Overlay</string>
+    <string name="fps_permission_overlay">Cần quyền hiển thị trên ứng dụng khác để hiện FPS.</string>
+    <string name="fps_action_grant_overlay">Cấp quyền overlay</string>
+    <string name="fps_toggle_enable">Bật FPS overlay</string>
+    <string name="fps_position">Vị trí</string>
+    <string name="fps_size">Cỡ chữ</string>
+    <string name="fps_bg_color">Màu nền (#RRGGBB)</string>
+    <string name="fps_text_color">Màu chữ (#RRGGBB)</string>
+    <string name="fps_bg_alpha">Độ mờ nền</string>
+    <string name="fps_text_alpha">Độ mờ chữ</string>
+    <string name="fps_padding">Cách lề (dp)</string>
+    <string name="fps_apply">Áp dụng</string>
+    <string name="fps_overlay_value">%1$.1f FPS</string>
+    <string name="fps_overlay_error">Không có dữ liệu FPS</string>
+    <string name="fps_error_color">Mã màu không hợp lệ</string>
+    <string name="fps_error_root">Chưa cấp root; chỉ dùng FPS từ framework.</string>
 
     <!-- Hide Developer -->
     <string name="hide_dev_message">Hello Hide Developer</string>
@@ -219,6 +248,9 @@
     <string name="settings_background_title">Ảnh nền</string>
     <string name="settings_background_not_set">Chưa chọn</string>
     <string name="settings_background_set">Đã chọn ảnh nền</string>
+    <string name="settings_avatar_title">Ảnh đại diện</string>
+    <string name="settings_avatar_not_set">Chưa thiết lập</string>
+    <string name="settings_avatar_set">Đã chọn ảnh đại diện tùy chỉnh</string>
     <string name="settings_section_about">Giới thiệu</string>
     <string name="settings_version_title">Phiên bản</string>
     <string name="settings_version_dev_enabled">Chế độ nhà phát triển đã bật</string>
@@ -229,6 +261,17 @@
     <string name="settings_background_status_set">Đã chọn ảnh nền</string>
     <string name="settings_action_choose_image">Chọn ảnh</string>
     <string name="settings_action_remove_image">Xóa ảnh</string>
+    <string name="settings_avatar_dialog_title">Ảnh đại diện người dùng</string>
+    <string name="settings_avatar_dialog_description">Chọn ảnh trong máy hoặc nhập URL/tên người dùng Telegram.</string>
+    <string name="settings_avatar_action_choose_image">Chọn từ thiết bị</string>
+    <string name="settings_avatar_action_remove">Xóa ảnh đại diện</string>
+    <string name="settings_avatar_input_label">URL ảnh hoặc tên người dùng Telegram</string>
+    <string name="settings_avatar_input_placeholder">https://… hoặc @username</string>
+    <string name="settings_avatar_action_fetch">Tải ảnh</string>
+    <string name="settings_avatar_loading">Đang xử lý…</string>
+    <string name="settings_avatar_toast_success">Đã cập nhật ảnh đại diện</string>
+    <string name="settings_avatar_toast_removed">Đã xóa ảnh đại diện</string>
+    <string name="settings_avatar_toast_error">%1$s</string>
     <string name="settings_background_blur">Độ mờ hình nền: %1$.0fdp</string>
     <string name="settings_background_card_opacity">Độ trong suốt nền thẻ: %1$d%%</string>
     <string name="settings_theme_dialog_title">Chủ đề</string>
@@ -362,6 +405,9 @@
     <string name="main_tab_tools">Tools</string>
     <string name="main_dialog_preparing_data">Chuẩn bị dữ liệu</string>
     <string name="main_dialog_loading_message">Đang tải dữ liệu cần thiết…</string>
+    <string name="main_dialog_framework_title">Cần bộ Framework</string>
+    <string name="main_dialog_framework_message">Kaorios Toolbox cần bộ công cụ framework để hoạt động.</string>
+    <string name="main_dialog_framework_open">Mở dự án GitHub</string>
     <string name="main_cd_app_logo">App logo</string>
     <string name="main_cd_restart">Khởi động lại</string>
     <string name="main_cd_settings">Cài đặt</string>

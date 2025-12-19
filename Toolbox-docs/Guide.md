@@ -1,4 +1,5 @@
 # Kaorios Toolbox Guide
+#V1.0.7
 
 ## Step 1: Download & place system files
 
@@ -40,22 +41,7 @@ ro.control_privapp_permissions=
 ```
 ApplicationPackageManager
 ```
-> add field:
-```
-.field private final mContext:Landroid/content/Context;
-```
-> add method:
-```
-.method public constructor <init>(Landroid/content/Context;)V
-    .registers 2
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    iput-object p1, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/content/Context;
-
-    return-void
-.end method
-```
 > ### This feature can easily cause bootloop, if you don't use it you can skip this Method:
 ```
 hasSystemFeature(Ljava/lang/String;)Z
@@ -71,7 +57,7 @@ hasSystemFeature(Ljava/lang/String;)Z
 
     move-result p0
 
-    invoke-static {p0, p1}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosAttestationBL(ZLjava/lang/String;)Z
+    invoke-static {p0, p1}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriFeatureBlock(ZLjava/lang/String;)Z
 
     move-result p0
 
@@ -83,351 +69,27 @@ hasSystemFeature(Ljava/lang/String;)Z
 ```
 hasSystemFeature(Ljava/lang/String;I)Z
 ```
-> Replace **.registers X** with:
+> below: **.registers X** add this code:
 ```
-.registers 12
-```
-> in method find:
-```
-Landroid/app/ApplicationPackageManager;->mHasSystemFeatureCache:Landroid/app/PropertyInvalidatedCache;
-```
-> add this code above the just found:
-```
-    invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
+invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
 
     move-result-object v0
 
-    iget-object v1, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/content/Context;
+    iget-object v1, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
 
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getAppLog()Ljava/lang/String;
+    invoke-static {v1, p1, v0}, Lcom/android/internal/util/kaorios/KaoriFeatureOverrides;->getOverride(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Boolean;
 
-    move-result-object v2
+    move-result-object v0
 
-    const/4 v3, 0x1
+    if-eqz v0, :cond_26
 
-    invoke-static {v1, v2, v3}, Lcom/android/internal/util/kaorios/SettingsHelper;->isToggleEnabled(Landroid/content/Context;Ljava/lang/String;Z)Z
-
-    move-result v1
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getFeaturesPixel()[Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getFeaturesPixelOthers()[Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getFeaturesTensor()[Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getFeaturesNexus()[Ljava/lang/String;
-
-    move-result-object v6
-
-    if-eqz v0, :cond_9f
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackageGsa()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-nez v7, :cond_6f
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackagePixelAgent()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-nez v7, :cond_6f
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackagePixelCreativeAssistant()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-nez v7, :cond_6f
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackagePixelDialer()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-nez v7, :cond_6f
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackagePhotos()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_9f
-
-    if-nez v1, :cond_9f
-
-    :cond_6f
-    invoke-static {v2}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v7
-
-    invoke-interface {v7, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_7b
-
-    goto/16 :goto_14d
-
-    :cond_7b
-    invoke-static {v4}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v7
-
-    invoke-interface {v7, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_87
-
-    goto/16 :goto_14d
-
-    :cond_87
-    invoke-static {v5}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v7
-
-    invoke-interface {v7, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_93
-
-    goto/16 :goto_14d
-
-    :cond_93
-    invoke-static {v6}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v7
-
-    invoke-interface {v7, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v7
-
-    if-eqz v7, :cond_9f
-
-    goto/16 :goto_14d
-
-    :cond_9f
-    const/4 v7, 0x0
-
-    if-eqz v0, :cond_dc
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackagePhotos()Ljava/lang/String;
-
-    move-result-object v8
-
-    invoke-virtual {v0, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v8
-
-    if-eqz v8, :cond_dc
-
-    if-eqz v1, :cond_dc
-
-    invoke-static {v2}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v1
-
-    invoke-interface {v1, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_b9
-
-    goto :goto_cf
-
-    :cond_b9
-    invoke-static {v4}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v1
-
-    invoke-interface {v1, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_c5
-
-    goto/16 :goto_14d
-
-    :cond_c5
-    invoke-static {v5}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v1
-
-    invoke-interface {v1, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_d0
-
-    :goto_cf
-    return v7
-
-    :cond_d0
-    invoke-static {v6}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v1
-
-    invoke-interface {v1, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_dc
-
-    goto/16 :goto_14d
-
-    :cond_dc
-    iget-object p0, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/content/Context;
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getSystemLog()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {p0, v1, v7}, Lcom/android/internal/util/kaorios/SettingsHelper;->isToggleEnabled(Landroid/content/Context;Ljava/lang/String;Z)Z
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result p0
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getModelInfoProperty()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPixelTensorModelRegex()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v1, v7}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-eqz v0, :cond_11e
-
-    invoke-static {}, Lcom/android/internal/util/kaorios/KaoriFeaturesUtils;->getPackageGoogleAs()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v0, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_11e
-
-    if-eqz v1, :cond_10f
-
-    invoke-static {v5}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v0
-
-    invoke-interface {v0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_10f
-
-    goto :goto_14d
-
-    :cond_10f
-    if-nez v1, :cond_11e
-
-    if-eqz p0, :cond_11e
-
-    invoke-static {v5}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v0
-
-    invoke-interface {v0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_11e
-
-    goto :goto_14d
-
-    :cond_11e
-    if-eqz p1, :cond_12d
-
-    invoke-static {v5}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object v0
-
-    invoke-interface {v0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_12d
-
-    if-nez v1, :cond_12d
 
     return p0
 
-    :cond_12d
-    invoke-static {v6}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p0
-
-    invoke-interface {p0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result p0
-
-    if-eqz p0, :cond_138
-
-    goto :goto_14d
-
-    :cond_138
-    invoke-static {v2}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p0
-
-    invoke-interface {p0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result p0
-
-    if-eqz p0, :cond_143
-
-    goto :goto_14d
-
-    :cond_143
-    invoke-static {v4}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    move-result-object p0
-
-    invoke-interface {p0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    move-result p0
-
-    if-eqz p0, :cond_14e
-
-    :goto_14d
-    return v3
-
-    :cond_14e
+    :cond_26
 ```
 
 ---
@@ -449,7 +111,7 @@ return-object v0
 
 > add this code above the just found:
 ```
-invoke-static {p1}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosProps(Landroid/content/Context;)V
+invoke-static {p1}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriProps(Landroid/content/Context;)V
 ```
 
 ---
@@ -467,7 +129,7 @@ return-object v0
 
 > add this code above the just found:
 ```
-invoke-static {p3}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosProps(Landroid/content/Context;)V
+invoke-static {p3}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriProps(Landroid/content/Context;)V
 ```
 
 ---
@@ -488,9 +150,9 @@ return-object v0
 
 > add this code above the just found:
 ```
-invoke-static {v0}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosKeybox(Landroid/system/keystore2/KeyEntryResponse;)Landroid/system/keystore2/KeyEntryResponse;
+invoke-static {v0}, Lcom/android/internal/util/kaorios/KaoriKeyboxHooks;->KaoriGetKeyEntry(Landroid/system/keystore2/KeyEntryResponse;)Landroid/system/keystore2/KeyEntryResponse;
 
-move-result-object v0
+    move-result-object v0
 ```
 
 ---
@@ -506,7 +168,7 @@ engineGetCertificateChain(Ljava/lang/String;)[Ljava/security/cert/Certificate;
 ```
 > below: **.registers XX** add this code:
 ```
-invoke-static {}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosPropsEngineGetCertificateChain()V
+invoke-static {}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriGetCertificateChain()V
 ```
 > in method find:
 ```
@@ -516,7 +178,7 @@ const/4 v4, 0x0
 ```
 > add this code below the just found:
 ```
-invoke-static {v3}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosKeybox([Ljava/security/cert/Certificate;)[Ljava/security/cert/Certificate;
+invoke-static {v3}, Lcom/android/internal/util/kaorios/KaoriKeyboxHooks;->KaoriGetCertificateChain([Ljava/security/cert/Certificate;)[Ljava/security/cert/Certificate;
 
     move-result-object v3
 ```

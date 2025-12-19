@@ -11,18 +11,19 @@
         }
     .end annotation
 
-    new-instance v0, Landroid/security/KeyStore2$$ExternalSyntheticLambda4;
+    invoke-static {}, Landroid/os/StrictMode;->noteDiskRead()V
 
-    invoke-direct {v0, p1}, Landroid/security/KeyStore2$$ExternalSyntheticLambda4;-><init>(Landroid/system/keystore2/KeyDescriptor;)V
+    new-instance v0, Landroid/security/KeyStore2$$ExternalSyntheticLambda8;
 
-    invoke-direct {p0, v0}, Landroid/security/KeyStore2;->handleRemoteExceptionWithRetry(Landroid/security/KeyStore2$CheckedRemoteRequest;)Ljava/lang/Object;
+    invoke-direct {v0, p1}, Landroid/security/KeyStore2$$ExternalSyntheticLambda8;-><init>(Landroid/system/keystore2/KeyDescriptor;)V
+
+    invoke-virtual {p0, v0}, Landroid/security/KeyStore2;->handleRemoteExceptionWithRetry(Landroid/security/KeyStore2$CheckedRemoteRequest;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/system/keystore2/KeyEntryResponse;
 
-    ###Kousei added
-    invoke-static {v0}, Lcom/android/internal/util/kaorios/ToolboxUtils;->KaoriosKeybox(Landroid/system/keystore2/KeyEntryResponse;)Landroid/system/keystore2/KeyEntryResponse;
+    invoke-static {v0}, Lcom/android/internal/util/kaorios/KaoriKeyboxHooks;->KaoriGetKeyEntry(Landroid/system/keystore2/KeyEntryResponse;)Landroid/system/keystore2/KeyEntryResponse;
 
     move-result-object v0
 

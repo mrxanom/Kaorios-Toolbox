@@ -1,5 +1,6 @@
 <resources>
-    <!-- @language type - by: @translator name -->
+
+    <!-- #language type - by: @translator name -->
 
     <!-- Common -->
     <string name="common_reset_to_default">Reset to default</string>
@@ -53,6 +54,11 @@
     <string name="device_info_fingerprint">Fingerprint</string>
     <string name="home_serial_hidden_label">Show</string>
     <string name="home_toast_copied">Copied: %1$s</string>
+    <string name="home_bootloader_label" translatable="false">#Bootloader: %1$s</string>
+    <string name="home_bootloader_state_locked" translatable="false">locked</string>
+    <string name="home_bootloader_state_unlocked" translatable="false">unlocked</string>
+    <string name="home_bootloader_state_unknown" translatable="false">unknown</string>
+    <string name="home_user_avatar_content_description">User avatar</string>
 
     <!-- Features Tools -->
     <string name="features_group_features">Features</string>
@@ -66,6 +72,9 @@
     <string name="features_toggle_spoof_qsb_summary">Allow spoofed Pixel props for the Google app and Quick Search Box.</string>
     <string name="features_toggle_spoof_games_title">App spoofing</string>
     <string name="features_toggle_spoof_games_summary">Spoof device configuration for apps to unlock advanced features.\nOpen Spoofing Apps to configure.</string>
+    <string name="features_list_spoof_games_option_disabled" translatable="false">Disabled</string>
+    <string name="features_list_spoof_games_option_hardcoded" translatable="false">Framework</string>
+    <string name="features_list_spoof_games_option_json" translatable="false">Toolbox + Framework</string>
     <string name="features_toggle_spoof_music_apps_title">Spoof music streaming apps</string>
     <string name="features_toggle_spoof_music_apps_summary">Disguise the device as a Meizu flagship for supported music apps to unlock premium playback.</string>
     <string name="features_toggle_spoof_snapchat_title">Spoof Snapchat</string>
@@ -79,24 +88,28 @@
     <string name="features_group_play_integrity">Google Play Integrity</string>
     <string name="features_toggle_spoof_gms_title">Spoof Google Play Services</string>
     <string name="features_toggle_spoof_gms_summary">Apply Pixel props to Google Play Services when certification is required.</string>
+    <string name="features_toggle_spoof_provider_title">Spoof keystore provider</string>
+    <string name="features_toggle_spoof_provider_summary">Replace the Android Keystore provider for Google Play Services and Play Store to spoof key attestation.</string>
     <string name="features_toggle_spoof_attestation_title">Block attestation</string>
     <string name="features_toggle_spoof_attestation_summary">Strip feature key attestation from apps.</string>
+    <string name="features_toggle_spoof_keybox_title">Spoof Keybox</string>
+    <string name="features_toggle_spoof_keybox_summary">Apply mocked Keybox responses to bypass Play Integrity checks.</string>
     <string name="features_group_system_adjustments">System adjustments</string>
     <string name="features_toggle_force_boot_hash_title">Force boot hash</string>
     <string name="features_toggle_force_boot_hash_summary">Override the bootloader hash to align with the applied Keybox data.</string>
     <string name="features_title_controls">Feature controls</string>
     <string name="features_snackbar_recommended_toggle">This feature is recommended to stay enabled.</string>
     <string name="features_content_description_recommended">Recommended</string>
-    <string name="features_prop_section_title">System properties</string>
-    <string name="features_prop_button_open">Set system property</string>
-    <string name="features_prop_dialog_title">Set system property</string>
-    <string name="features_prop_key_label">Property name</string>
-    <string name="features_prop_value_label">Value (leave empty to clear)</string>
-    <string name="features_prop_button_load">Load current value</string>
-    <string name="features_prop_message_loaded">Current value: %1$s</string>
-    <string name="features_prop_message_loaded_empty">Current value: (empty)</string>
-    <string name="features_prop_error_empty_key">Please enter a property name.</string>
-    <string name="features_prop_result_failed">setprop: failed (bridge unavailable)</string>
+    <string name="features_prop_section_title" translatable="false">System properties</string>
+    <string name="features_prop_button_open" translatable="false">Set system property</string>
+    <string name="features_prop_dialog_title" translatable="false">Set system property</string>
+    <string name="features_prop_key_label" translatable="false">Property name</string>
+    <string name="features_prop_value_label" translatable="false">Value (leave empty to clear)</string>
+    <string name="features_prop_button_load" translatable="false">Load current value</string>
+    <string name="features_prop_message_loaded" translatable="false">Current value: %1$s</string>
+    <string name="features_prop_message_loaded_empty" translatable="false">Current value: (empty)</string>
+    <string name="features_prop_error_empty_key" translatable="false">Please enter a property name.</string>
+    <string name="features_prop_result_failed" translatable="false">setprop: failed (bridge unavailable)</string>
 
     <!-- Hidden Tools -->
     <string name="hidden_group_sensitive_title">Sensitive options</string>
@@ -187,6 +200,26 @@
     <string name="hidden_action_delete_rule">Delete</string>
     <string name="hidden_message_missing_packages">%1$d app configurations target apps that are not installed.</string>
 
+    <!-- FPS Overlay -->
+    <string name="tool_page_fps_title">FPS</string>
+    <string name="tool_page_fps_summary">Display FPS overlay and customize its appearance.</string>
+    <string name="fps_title">FPS Overlay</string>
+    <string name="fps_permission_overlay">Overlay permission is required to show FPS on top of other apps.</string>
+    <string name="fps_action_grant_overlay">Grant overlay permission</string>
+    <string name="fps_toggle_enable">Enable FPS overlay</string>
+    <string name="fps_position">Position</string>
+    <string name="fps_size">Text size</string>
+    <string name="fps_bg_color">Background color (#RRGGBB)</string>
+    <string name="fps_text_color">Text color (#RRGGBB)</string>
+    <string name="fps_bg_alpha">Background opacity</string>
+    <string name="fps_text_alpha">Text opacity</string>
+    <string name="fps_padding">Padding (dp)</string>
+    <string name="fps_apply">Apply</string>
+    <string name="fps_overlay_value">%1$.1f FPS</string>
+    <string name="fps_overlay_error">FPS unavailable</string>
+    <string name="fps_error_color">Invalid color code</string>
+    <string name="fps_error_root">Root access not granted; using framework FPS only.</string>
+
     <!-- Hide Developer -->
     <string name="hide_dev_message">Hello Hide Developer</string>
 
@@ -231,6 +264,9 @@
     <string name="settings_background_title">Background image</string>
     <string name="settings_background_not_set">Not set</string>
     <string name="settings_background_set">Background image selected</string>
+    <string name="settings_avatar_title">Avatar</string>
+    <string name="settings_avatar_not_set">Not set</string>
+    <string name="settings_avatar_set">Custom avatar selected</string>
     <string name="settings_section_about">About</string>
     <string name="settings_version_title">Version</string>
     <string name="settings_version_dev_enabled">Developer mode enabled</string>
@@ -241,6 +277,17 @@
     <string name="settings_background_status_set">Background image selected</string>
     <string name="settings_action_choose_image">Choose image</string>
     <string name="settings_action_remove_image">Remove image</string>
+    <string name="settings_avatar_dialog_title">Avatar</string>
+    <string name="settings_avatar_dialog_description">Choose a local image or paste a URL / Telegram username.</string>
+    <string name="settings_avatar_action_choose_image">Pick from device</string>
+    <string name="settings_avatar_action_remove">Remove avatar</string>
+    <string name="settings_avatar_input_label">Image URL or Telegram username</string>
+    <string name="settings_avatar_input_placeholder">https://… or @username</string>
+    <string name="settings_avatar_action_fetch">Fetch image</string>
+    <string name="settings_avatar_loading">Working…</string>
+    <string name="settings_avatar_toast_success">Avatar updated</string>
+    <string name="settings_avatar_toast_removed">Avatar removed</string>
+    <string name="settings_avatar_toast_error">%1$s</string>
     <string name="settings_background_blur">Background blur: %1$.0f dp</string>
     <string name="settings_background_card_opacity">Card overlay opacity: %1$d%%</string>
     <string name="settings_theme_dialog_title">Theme</string>
@@ -260,6 +307,11 @@
     <string name="settings_dialog_primary_color_hex_label">Color code #RRGGBB</string>
     <string name="settings_language_title">Language</string>
     <string name="settings_language_system">Use device language</string>
+    <string name="settings_language_english" translatable="false">English</string>
+    <string name="settings_language_indonesian" translatable="false">Bahasa Indonesia</string>
+    <string name="settings_language_spanish" translatable="false">Español</string>
+    <string name="settings_language_russian" translatable="false">Русский</string>
+    <string name="settings_language_vietnamese" translatable="false">Tiếng Việt</string>
     <string name="settings_language_dialog_title">Choose language</string>
 
     <!-- Tools -->
@@ -374,6 +426,9 @@
     <string name="main_tab_tools">Tools</string>
     <string name="main_dialog_preparing_data">Preparing data</string>
     <string name="main_dialog_loading_message">Fetching required data…</string>
+    <string name="main_dialog_framework_title">Framework required</string>
+    <string name="main_dialog_framework_message">Kaorios Toolbox needs the framework toolkit to operate.</string>
+    <string name="main_dialog_framework_open">Open GitHub project</string>
     <string name="main_cd_app_logo">App logo</string>
     <string name="main_cd_restart">Restart</string>
     <string name="main_cd_settings">Settings</string>
@@ -387,4 +442,6 @@
     <string name="main_action_bootloader">Bootloader</string>
     <string name="main_preview_notice">Sample marquee message for preview purposes</string>
     <string name="main_preview_body">Preview body</string>
+    <string name="features_toggle_spoof_netflix_title">Spoof Netflix</string>
+    <string name="features_toggle_spoof_netflix_summary">Spoof Pixel devices are used to unlock certain features of Netflix apps.</string>
 </resources>

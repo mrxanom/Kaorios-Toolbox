@@ -1,5 +1,5 @@
 <resources>
-    <!-- @language type ru by: @ameerchik6 -->
+    <!-- #Русский язык by: @ameerchik6 -->
 
     <!-- Common -->
     <string name="common_reset_to_default">Сбросить по умолчанию</string>
@@ -53,6 +53,7 @@
     <string name="device_info_fingerprint">Отпечаток</string>
     <string name="home_serial_hidden_label">Показать</string>
     <string name="home_toast_copied">Скопировано: %1$s</string>
+    <string name="home_user_avatar_content_description">Аватар пользователя</string>
 
     <!-- Features Tools -->
     <string name="features_group_features">Функции</string>
@@ -79,8 +80,14 @@
     <string name="features_group_play_integrity">Google Play Integrity</string>
     <string name="features_toggle_spoof_gms_title">Спуф сервисов Google Play</string>
     <string name="features_toggle_spoof_gms_summary">Применить свойства Pixel к сервисам Google Play, когда требуется сертификация.</string>
-    <string name="features_toggle_spoof_attestation_title">Заблокировать аттестацию</string>
-    <string name="features_toggle_spoof_attestation_summary">Удалить подтверждение ключей функций из приложений.</string>
+    <string name="features_toggle_spoof_provider_title">Спуф провайдера Keystore</string>
+    <string name="features_toggle_spoof_provider_summary">Заменяет провайдера Android Keystore для Google Play Services и Play Store, чтобы подделывать аттестацию ключей.</string>
+    <string name="features_toggle_spoof_attestation_title">Блокировать проверку</string>
+    <string name="features_toggle_spoof_attestation_summary">Удаляет проверку аппаратных ключей.</string>
+    <string name="features_toggle_spoof_netflix_title">Спуф Netflix</string>
+    <string name="features_toggle_spoof_netflix_summary">Подделать устройство как Pixel, чтобы разблокировать некоторые функции Netflix.</string>
+    <string name="features_toggle_spoof_keybox_title">Подмена Keybox</string>
+    <string name="features_toggle_spoof_keybox_summary">Возвращает поддельные ответы Keybox для обхода Play Integrity.</string>
     <string name="features_group_system_adjustments">Системные корректировки</string>
     <string name="features_toggle_force_boot_hash_title">Принудительный хэш загрузки</string>
     <string name="features_toggle_force_boot_hash_summary">Переопределить хэш загрузки для соответствия примененным данным Keybox.</string>
@@ -176,7 +183,27 @@
     <string name="hidden_action_duplicate_rule">Дублировать</string>
     <string name="hidden_action_delete_rule">Удалить</string>
     <string name="hidden_message_missing_packages">%1$d конфигураций относятся к неустановленным приложениям.</string>
-    
+
+    <!-- FPS Overlay -->
+    <string name="tool_page_fps_title">FPS</string>
+    <string name="tool_page_fps_summary">Отображать FPS-оверлей и настраивать его вид.</string>
+    <string name="fps_title">FPS-оверлей</string>
+    <string name="fps_permission_overlay">Для отображения FPS поверх приложений требуется разрешение наложения.</string>
+    <string name="fps_action_grant_overlay">Выдать разрешение на наложение</string>
+    <string name="fps_toggle_enable">Включить FPS-оверлей</string>
+    <string name="fps_position">Позиция</string>
+    <string name="fps_size">Размер текста</string>
+    <string name="fps_bg_color">Цвет фона (#RRGGBB)</string>
+    <string name="fps_text_color">Цвет текста (#RRGGBB)</string>
+    <string name="fps_bg_alpha">Прозрачность фона</string>
+    <string name="fps_text_alpha">Прозрачность текста</string>
+    <string name="fps_padding">Отступ (dp)</string>
+    <string name="fps_apply">Применить</string>
+    <string name="fps_overlay_value">%1$.1f FPS</string>
+    <string name="fps_overlay_error">FPS недоступен</string>
+    <string name="fps_error_color">Неверный цветовой код</string>
+    <string name="fps_error_root">Root-доступ не предоставлен; используется только FPS из фреймворка.</string>
+
     <!-- Hide Developer -->
     <string name="hide_dev_message">Привет, скрытый разработчик</string>
 
@@ -221,6 +248,9 @@
     <string name="settings_background_title">Фоновое изображение</string>
     <string name="settings_background_not_set">Не установлено</string>
     <string name="settings_background_set">Фоновое изображение выбрано</string>
+    <string name="settings_avatar_title">Аватар</string>
+    <string name="settings_avatar_not_set">Не задан</string>
+    <string name="settings_avatar_set">Выбран собственный аватар</string>
     <string name="settings_section_about">О приложении</string>
     <string name="settings_version_title">Версия</string>
     <string name="settings_version_dev_enabled">Режим разработчика включён</string>
@@ -231,6 +261,17 @@
     <string name="settings_background_status_set">Фоновое изображение выбрано</string>
     <string name="settings_action_choose_image">Выбр. изобр.</string>
     <string name="settings_action_remove_image">Удалить изобр.</string>
+    <string name="settings_avatar_dialog_title">Аватар пользователя</string>
+    <string name="settings_avatar_dialog_description">Выберите локальное изображение или вставьте URL/имя пользователя Telegram.</string>
+    <string name="settings_avatar_action_choose_image">Выб. из устр.</string>
+    <string name="settings_avatar_action_remove">Удалить аватар</string>
+    <string name="settings_avatar_input_label">URL изображения или имя пользователя Telegram</string>
+    <string name="settings_avatar_input_placeholder">https://… или @username</string>
+    <string name="settings_avatar_action_fetch">Загрузить изображение</string>
+    <string name="settings_avatar_loading">Выполняется…</string>
+    <string name="settings_avatar_toast_success">Аватар обновлён</string>
+    <string name="settings_avatar_toast_removed">Аватар удалён</string>
+    <string name="settings_avatar_toast_error">%1$s</string>
     <string name="settings_background_blur">Размытие фона: %1$.0f dp</string>
     <string name="settings_background_card_opacity">Прозрачность наложения: %1$d%%</string>
     <string name="settings_theme_dialog_title">Тема</string>
@@ -364,6 +405,9 @@
     <string name="main_tab_tools">Инструменты</string>
     <string name="main_dialog_preparing_data">Подготовка данных</string>
     <string name="main_dialog_loading_message">Загрузка необходимых данных…</string>
+    <string name="main_dialog_framework_title">Требуется фреймворк</string>
+    <string name="main_dialog_framework_message">Kaorios Toolbox требует установленного фреймворк-комплекта.</string>
+    <string name="main_dialog_framework_open">Открыть проект на GitHub</string>
     <string name="main_cd_app_logo">Логотип приложения</string>
     <string name="main_cd_restart">Перезапустить</string>
     <string name="main_cd_settings">Настройки</string>

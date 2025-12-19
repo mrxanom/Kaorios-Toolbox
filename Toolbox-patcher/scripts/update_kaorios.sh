@@ -58,9 +58,9 @@ get_latest_release_info() {
     fi
     
     # Extract download URLs for individual assets
-    APK_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*KaoriosToolbox.*\.apk"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
+    APK_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*Kaorios-Toolbox[^"]*\.apk"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
     XML_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*privapp_whitelist[^"]*\.xml"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
-    DEX_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*classes.*\.dex"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
+    DEX_URL=$(echo "$response" | grep -o '"browser_download_url": *"[^"]*classes[^"]*\.dex"' | sed 's/"browser_download_url": *"\(.*\)"/\1/')
     
     if [ -z "$APK_URL" ] || [ -z "$XML_URL" ]; then
         err "Could not find required assets in release"
