@@ -48,7 +48,7 @@ hasSystemFeature(Ljava/lang/String;)Z
 ```
 > Replace all method (skip if bootloop):
 ```
-.method public hasSystemFeature(Ljava/lang/String;)Z
+.method public hasSystemFeatureTests(Ljava/lang/String;)Z
     .registers 3
 
     const/4 v0, 0x0
@@ -57,10 +57,14 @@ hasSystemFeature(Ljava/lang/String;)Z
 
     move-result p0
 
+    :try_start_kousei
     invoke-static {p0, p1}, Lcom/android/internal/util/kaorios/KaoriPropsUtils;->KaoriFeatureBlock(ZLjava/lang/String;)Z
 
     move-result p0
+    :try_end_kaorios
+    .catchall {:try_start_kousei .. :try_end_kaorios} :catchall_kaorios
 
+    :catchall_kaorios
     return p0
 .end method
 
@@ -72,24 +76,33 @@ hasSystemFeature(Ljava/lang/String;I)Z
 > below: **.registers X** add this code:
 ```
 invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
-
+            
     move-result-object v0
-
+            
+    :try_start_kaori_override
     iget-object v1, p0, Landroid/app/ApplicationPackageManager;->mContext:Landroid/app/ContextImpl;
-
+            
     invoke-static {v1, p1, v0}, Lcom/android/internal/util/kaorios/KaoriFeatureOverrides;->getOverride(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Boolean;
-
+            
     move-result-object v0
-
-    if-eqz v0, :cond_26
-
+    :try_end_kaori_override
+    .catchall {:try_start_kaori_override .. :try_end_kaori_override} :catchall_kaori_override
+            
+    goto :goto_kaori_override
+            
+    :catchall_kaori_override
+    const/4 v0, 0x0
+            
+    :goto_kaori_override
+    if-eqz v0, :cond_kaori_override
+            
     invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
-
+            
     move-result p0
-
+            
     return p0
-
-    :cond_26
+            
+    :cond_kaori_override
 ```
 
 ---
