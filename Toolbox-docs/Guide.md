@@ -1,5 +1,4 @@
 # Kaorios Toolbox Guide
-#V1.0.7
 
 ## Step 1: Download & place system files
 
@@ -48,7 +47,7 @@ hasSystemFeature(Ljava/lang/String;)Z
 ```
 > Replace all method (skip if bootloop):
 ```
-.method public hasSystemFeatureTests(Ljava/lang/String;)Z
+.method public hasSystemFeature(Ljava/lang/String;)Z
     .registers 3
 
     const/4 v0, 0x0
