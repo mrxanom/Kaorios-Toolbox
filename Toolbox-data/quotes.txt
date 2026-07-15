@@ -1,4 +1,1 @@
-Keybox OK
-BASIC:  ✅
-DEVICE: ✅
-STRONG: ✅
+Keybox Working!

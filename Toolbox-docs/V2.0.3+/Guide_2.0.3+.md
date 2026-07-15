@@ -197,3 +197,4 @@ This makes it easier to track which register is used as input, output, or tempor
 - `Services.jar`: hook `SystemServer`
 - Adjust register counts carefully when adding new instructions
 - Keep register usage consistent inside each method
+- Make sure the value props (Fake Locked) = green

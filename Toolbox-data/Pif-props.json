@@ -1,7 +1,14 @@
 {
-"MODEL": "Pixel 9 Pro XL",
-"MANUFACTURER": "Google",
-"FINGERPRINT": "google/komodo_beta/komodo:CANARY/ZP11.260417.009/15372612:user/release-keys",
-"SECURITY_PATCH": "2026-04-05",
-"DEVICE_INITIAL_SDK_INT": "34"
+  "TYPE": "user",
+  "TAGS": "release-keys",
+  "ID": "CP2A.260705.006",
+  "BRAND": "google",
+  "DEVICE": "stallion",
+  "FINGERPRINT": "google/stallion/stallion:17/CP2A.260705.006/15641320:user/release-keys",
+  "MANUFACTURER": "Google",
+  "MODEL": "Pixel 10a",
+  "PRODUCT": "stallion",
+  "RELEASE": "17",
+  "SECURITY_PATCH": "2026-07-05",
+  "DEVICE_INITIAL_SDK_INT": "34"
 }
